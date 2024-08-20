@@ -16,5 +16,5 @@ class Task(models.Model):
     done = models.BooleanField(default=False)
     tags = models.ManyToManyField(
         to=Tag,
-        related_name='tasks',
+        related_name="tasks",
     )
