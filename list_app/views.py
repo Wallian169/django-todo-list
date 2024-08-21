@@ -11,6 +11,6 @@ def index(request: HttpRequest) -> HttpResponse:
     }
     return render(
         request=request,
-        template_name="index.html",
+        template_name="list_app/index.html",
         context=context
     )
