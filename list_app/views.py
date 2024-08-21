@@ -1,5 +1,5 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -18,6 +18,13 @@ def index(request: HttpRequest) -> HttpResponse:
         template_name="list_app/index.html",
         context=context
     )
+
+
+def toggle_task_done(request: HttpRequest, pk: int) -> HttpResponse:
+    task = Task.objects.get(id=pk)
+    task.done = not task.done
+    task.save()
+    return redirect("list_app:index")
 
 
 class TagListView(generic.ListView):
