@@ -2,7 +2,7 @@
 {% load crispy_forms_filters %}
 
 {% block title %}
-	{{ object|yesno:"Update,Create" }} {{ object }}
+	<title>{{ object|yesno:"Update,Create" }} {{ object }}</title>
 {% endblock %}
 
 {% block content %}
