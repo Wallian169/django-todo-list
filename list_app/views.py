@@ -1,7 +1,8 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.views import generic
 
-from list_app.models import Task
+from list_app.models import Task, Tag
 
 
 def index(request: HttpRequest) -> HttpResponse:
@@ -15,3 +16,9 @@ def index(request: HttpRequest) -> HttpResponse:
         template_name="list_app/index.html",
         context=context
     )
+
+
+class TagListView(generic.ListView):
+    model = Tag
+    template_name = "list_app/tag_list.html"
+    context_object_name = "tags"

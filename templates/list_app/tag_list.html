@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+	<title>Tags</title>
+{% endblock %}
+
+{% block content %}
+	<h2>Tags</h2>
+  <table class="table bordered-column">
+  <tr>
+    <th>Name</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  {% for tag in tags %}
+  	<tr>
+      <td>{{ tag }}</td>
+      <td><a href="#">Update</a></td>
+      <td><a href="#" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% empty %}
+      <p>There are no tags yet</p>
+  {% endfor %}
+  </table>
+{% endblock %}
