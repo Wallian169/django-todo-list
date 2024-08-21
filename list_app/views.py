@@ -27,6 +27,12 @@ def toggle_task_done(request: HttpRequest, pk: int) -> HttpResponse:
     return redirect("list_app:index")
 
 
+def delete_task(request: HttpRequest, pk: int) -> HttpResponse:
+    task = Task.objects.get(id=pk)
+    task.delete()
+    return redirect("list_app:index")
+
+
 class TagListView(generic.ListView):
     model = Tag
     template_name = "list_app/tag_list.html"

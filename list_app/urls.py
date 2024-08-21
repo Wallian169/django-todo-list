@@ -9,7 +9,8 @@ from list_app.views import (
     TagCreateView,
     TaskCreateView,
     TaskUpdateView,
-    toggle_task_done
+    toggle_task_done,
+    delete_task
 )
 urlpatterns = [
     path("", index, name="index"),
@@ -17,8 +18,10 @@ urlpatterns = [
     path("tags/<int:pk>", TagUpdateView.as_view(), name="tag-update"),
     path("tags/create-tag/", TagCreateView.as_view(), name="tag-create"),
     path("create-task/", TaskCreateView.as_view(), name="create-task"),
-    path("toggle-done/<int:pk>", toggle_task_done, name="toggle-done"),
-    path("update-task/<int:pk>", TaskUpdateView.as_view(), name="update-task"),
+    path("toggle-done/<int:pk>/", toggle_task_done, name="toggle-done"),
+    path("update-task/<int:pk>/", TaskUpdateView.as_view(), name="update-task"),
+    path("delete-task/<int:pk>/", toggle_task_done, name="delete-task"),
+    path("delete-task/<int:pk>/", delete_task, name="delete-task"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 app_name = "list_app"
