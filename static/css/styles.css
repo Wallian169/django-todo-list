@@ -1,3 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-width: 400px;
+}
+.container-fluid {
+    width: 70%;
+}
 h1 {
     font-size: 48px;
+}
+span {
+    text-decoration: underline;
+    font-weight: bold;
+}
+.done {
+    color: green;
+}
+.not-done {
+    color: red;
+}
+.task {
+    border-bottom: 3px solid gray;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.deadline {
+    color: brown;
 }

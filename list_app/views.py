@@ -5,9 +5,10 @@ from list_app.models import Task
 
 
 def index(request: HttpRequest) -> HttpResponse:
-    tasks = Task.objects.all()
+    tasks = Task.objects.all().prefetch_related("tags")
+    tasks.order_by("-done", "-created_at")
     context = {
-        "tasks": tasks
+        "tasks": tasks,
     }
     return render(
         request=request,
