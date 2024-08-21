@@ -6,11 +6,15 @@ from list_app.views import (
     index,
     TagListView,
     TagUpdateView,
+    TagCreateView,
+    TaskCreateView,
 )
 urlpatterns = [
     path("", index, name="index"),
     path("tags/", TagListView.as_view(), name="tag-list"),
     path("tags/<int:pk>", TagUpdateView.as_view(), name="tag-update"),
+    path("tags/create-tag/", TagCreateView.as_view(), name="tag-create"),
+    path("create-task/", TaskCreateView.as_view(), name="create-task"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 app_name = "list_app"

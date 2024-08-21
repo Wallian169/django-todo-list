@@ -5,7 +5,10 @@
 {% endblock %}
 
 {% block content %}
-	<h2>Tags</h2>
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Tags</h2>
+    <a href="{% url 'list_app:tag-create' %}" class="btn btn-success">Add Tag</a>
+  </div>
   <table class="table bordered-column">
   <tr>
     <th>Name</th>

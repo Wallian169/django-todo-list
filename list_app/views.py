@@ -3,12 +3,13 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
+from list_app.forms import TaskForm
 from list_app.models import Task, Tag
 
 
 def index(request: HttpRequest) -> HttpResponse:
     tasks = Task.objects.all().prefetch_related("tags")
-    tasks.order_by("-done", "-created_at")
+    tasks = tasks.order_by("done", "-created_at")
     context = {
         "tasks": tasks,
     }
@@ -29,3 +30,15 @@ class TagUpdateView(generic.UpdateView):
     model = Tag
     fields = ["name"]
     success_url = reverse_lazy("list_app:tag-list")
+
+
+class TagCreateView(generic.CreateView):
+    model = Tag
+    fields = ["name"]
+    success_url = reverse_lazy("list_app:tag-list")
+
+
+class TaskCreateView(generic.CreateView):
+    model = Task
+    success_url = reverse_lazy("list_app:index")
+    form_class = TaskForm
