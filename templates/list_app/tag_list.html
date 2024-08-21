@@ -19,7 +19,7 @@
   	<tr>
       <td>{{ tag }}</td>
       <td><a href="{% url 'list_app:tag-update' pk=tag.pk%}">Update</a></td>
-      <td><a href="#" class="btn btn-danger">Delete</a></td>
+      <td><a href="{% url 'list_app:delete-tag' pk=tag.pk %}" class="btn btn-danger">Delete</a></td>
     </tr>
     {% empty %}
       <p>There are no tags yet</p>

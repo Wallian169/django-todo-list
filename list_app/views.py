@@ -33,6 +33,12 @@ def delete_task(request: HttpRequest, pk: int) -> HttpResponse:
     return redirect("list_app:index")
 
 
+def delete_tag(request: HttpRequest, pk: int) -> HttpResponse:
+    tag = Tag.objects.get(id=pk)
+    tag.delete()
+    return redirect("list_app:tag-list")
+
+
 class TagListView(generic.ListView):
     model = Tag
     template_name = "list_app/tag_list.html"
