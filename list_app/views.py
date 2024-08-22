@@ -10,6 +10,7 @@ from list_app.models import Task, Tag
 class TaskListView(generic.ListView):
     model = Task
     queryset = Task.objects.all().prefetch_related("tags")
+    queryset = queryset.order_by("done", "-created_at")
     context_object_name = "tasks"
     template_name = "list_app/index.html"
 
