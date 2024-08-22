@@ -11,7 +11,7 @@ from list_app.views import (
     TaskUpdateView,
     toggle_task_done,
     delete_task,
-    delete_tag,
+    TagDeleteView,
 )
 urlpatterns = [
     path("", TaskListView.as_view(), name="index"),
@@ -23,7 +23,7 @@ urlpatterns = [
     path("update-task/<int:pk>/", TaskUpdateView.as_view(), name="update-task"),
     path("delete-task/<int:pk>/", toggle_task_done, name="delete-task"),
     path("delete-task/<int:pk>/", delete_task, name="delete-task"),
-    path("delete-tag/<int:pk>/", delete_tag, name="delete-tag"),
+    path("delete-tag/<int:pk>/", TagDeleteView.as_view(), name="delete-tag"),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 app_name = "list_app"
