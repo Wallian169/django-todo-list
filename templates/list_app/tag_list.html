@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+	<title>Tags</title>
+{% endblock %}
+
+{% block content %}
+  <div class="d-flex justify-content-between align-items-center">
+    <h2>Tags</h2>
+    <a href="{% url 'list_app:tag-create' %}" class="btn btn-success">Add Tag</a>
+  </div>
+  <table class="table bordered-column">
+  <tr>
+    <th>Name</th>
+    <th>Update</th>
+    <th>Delete</th>
+  </tr>
+  {% for tag in tags %}
+  	<tr>
+      <td>{{ tag }}</td>
+      <td><a href="{% url 'list_app:tag-update' pk=tag.pk%}">Update</a></td>
+      <td><a href="{% url 'list_app:delete-tag' pk=tag.pk %}" class="btn btn-danger">Delete</a></td>
+    </tr>
+    {% empty %}
+      <p>There are no tags yet</p>
+  {% endfor %}
+  </table>
+{% endblock %}
