@@ -38,11 +38,7 @@
           {% endfor %}
         {% endif %}
         <a href="{% url 'list_app:update-task' pk=task.pk %}">Update</a>
-        <a href="{% url 'list_app:delete-task' task.id %}" 
-           onclick="return confirm('Are you sure you want to delete this task?');" 
-           style="color: red; text-decoration: none; cursor: pointer;">
-           Delete
-        </a>
+        <a href="{% url 'list_app:delete-task' pk=task.pk %}">Delete</a></a>
       </p>
     </div>
     </div>
