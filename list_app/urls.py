@@ -3,7 +3,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from list_app.views import (
-    index,
+    TaskListView,
     TagListView,
     TagUpdateView,
     TagCreateView,
@@ -14,7 +14,7 @@ from list_app.views import (
     delete_tag,
 )
 urlpatterns = [
-    path("", index, name="index"),
+    path("", TaskListView.as_view(), name="index"),
     path("tags/", TagListView.as_view(), name="tag-list"),
     path("tags/<int:pk>", TagUpdateView.as_view(), name="tag-update"),
     path("tags/create-tag/", TagCreateView.as_view(), name="tag-create"),

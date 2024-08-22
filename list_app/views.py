@@ -1,5 +1,5 @@
 from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views import generic
 
@@ -7,17 +7,14 @@ from list_app.forms import TaskForm
 from list_app.models import Task, Tag
 
 
-def index(request: HttpRequest) -> HttpResponse:
-    tasks = Task.objects.all().prefetch_related("tags")
-    tasks = tasks.order_by("done", "-created_at")
-    context = {
-        "tasks": tasks,
-    }
-    return render(
-        request=request,
-        template_name="list_app/index.html",
-        context=context
-    )
+class TaskListView(generic.ListView):
+    model = Task
+    queryset = Task.objects.all().prefetch_related("tags")
+    context_object_name = "tasks"
+    template_name = "list_app/index.html"
+
+    def post(self, request: HttpRequest) -> HttpResponse:
+        pass
 
 
 def toggle_task_done(request: HttpRequest, pk: int) -> HttpResponse:
